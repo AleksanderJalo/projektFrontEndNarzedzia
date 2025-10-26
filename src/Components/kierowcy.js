@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
+import "../App.scss";
 
 function App() {
   const [kierowcy, setKierowcy] = useState([]);
@@ -13,12 +14,16 @@ function App() {
 
     getData();
   }, []);
+
   return (
     <div className="App">
       <h1>Kierowcy F1</h1>
-      <ul>
+      <ul className="drivers-list">
         {kierowcy.map((kierowca, index) => (
-            <li key={index}>{`NR:${kierowca.driver_number}     ${kierowca.full_name}`}</li>
+          <li key={index} className="driver-card">
+            <span className="driver-number">NR: {kierowca.driver_number}</span>
+            <span className="driver-name">{kierowca.full_name}</span>
+          </li>
         ))}
       </ul>
     </div>
